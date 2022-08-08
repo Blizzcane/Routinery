@@ -1,13 +1,10 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import Dashboard from './Dashboard'
-import styles from '../styles/Home.module.css'
-import ResponsiveAppBar from './ResponsiveAppBar'
+import Head from 'next/head' 
+import styles from '../styles/Home.module.css' 
+import Routines from './Routines'
 
 export default function Home() {
   return (
-    <div>
-    <ResponsiveAppBar />
+    <div> 
       <Head>
         <title>Routinery</title>
         <meta name="description" content="Routine tracker app" />
@@ -15,7 +12,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}> 
-        <Dashboard/>
+        <Routines/>
       </main>
 
       <footer className={styles.footer}> 
