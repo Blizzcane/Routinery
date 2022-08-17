@@ -1,5 +1,6 @@
 import * as React from "react";
 import {
+  Checkbox,
   Paper,
   Table,
   TableBody,
@@ -51,7 +52,7 @@ const rows = [
 const Routines = () => {
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <Table sx={{ maxWidth: 500 }} aria-label="simple table">
         <TableHead>
           <TableRow>
             <TableCell>Habit</TableCell>
@@ -71,13 +72,27 @@ const Routines = () => {
               <TableCell component="th" scope="row">
                 {row.name}
               </TableCell>
-              <TableCell align="center">{row.sunday}</TableCell>
-              <TableCell align="center">{row.monday}</TableCell>
-              <TableCell align="center">{row.tuesday}</TableCell>
-              <TableCell align="center">{row.wednesday}</TableCell>
-              <TableCell align="center">{row.thursday}</TableCell>
-              <TableCell align="center">{row.friday}</TableCell>
-              <TableCell align="center">{row.saturday}</TableCell>
+              <TableCell align="center">
+                <Checkbox checked={row.sunday} />
+              </TableCell>
+              <TableCell align="center">
+                <Checkbox checked={row.monday} />
+              </TableCell>
+              <TableCell align="center">
+                <Checkbox checked={row.tuesday} />
+              </TableCell>
+              <TableCell align="center">
+                <Checkbox checked={row.wednesday} />
+              </TableCell>
+              <TableCell align="center">
+                <Checkbox checked={row.thursday} />
+              </TableCell>
+              <TableCell align="center">
+                <Checkbox checked={row.friday} />
+              </TableCell>
+              <TableCell align="center">
+                <Checkbox checked={row.saturday} />
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
