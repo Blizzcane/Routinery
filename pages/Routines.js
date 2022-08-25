@@ -56,12 +56,13 @@ const Routines = () => {
   ]);
 
   const onChange = (name, day) => {
-    const newState = routines.map((obj) => {
-      if (obj.name === name) {
-        const newDays = obj.days;
+    const newState = routines.map((routine) => {
+      if (routine.name === name) {
+        const newDays = routine.days;
         newDays[day] = !newDays[day];
-        return { ...obj, newDays };
+        return { ...routine, newDays };
       }
+      return routine;
     });
     setRoutines(newState);
   };
