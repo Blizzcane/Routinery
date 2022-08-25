@@ -45,8 +45,7 @@ function createData(
 const rows = [
   createData("Frozen", true, false, false, true, false, false, true),
   createData("yoghurt", false, true, false, true, true, false, false),
-  createData("Froz", false, true, true, false, false, false, false),
-  createData("Frozsdfa", true, false, false, true, false, true, false),
+  createData("Froz", false, true, true, false, false, false, false), 
 ];
 
 const Routines = () => {
