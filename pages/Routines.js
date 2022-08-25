@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import {
   Checkbox,
   Paper,
@@ -45,10 +45,27 @@ function createData(
 const rows = [
   createData("Frozen", true, false, false, true, false, false, true),
   createData("yoghurt", false, true, false, true, true, false, false),
-  createData("Froz", false, true, true, false, false, false, false), 
+  createData("Froz", false, true, true, false, false, false, false),
 ];
 
 const Routines = () => {
+  const [routines, setRoutines] = useState([
+    { name: "Work", days: [false, true, true, false, false, true, true] },
+    { name: "Shower", days: [true, true, true, false, false, false, false] },
+    { name: "Read", days: [false, true, false, false, false, true, false] },
+  ]);
+
+  const onChange = (name, day) => {
+    const newState = routines.map((obj) => {
+      if (obj.name === name) {
+        const newDays = obj.days;
+        newDays[day] = !newDays[day];
+        return { ...obj, newDays };
+      }
+    });
+    setRoutines(newState);
+  };
+
   return (
     <TableContainer component={Paper}>
       <Table sx={{ maxWidth: 500 }} aria-label="simple table">
@@ -63,35 +80,22 @@ const Routines = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {routines.map(({ name, days }) => (
             <TableRow
-              key={row.name}
+              key={name}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
               <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
-              <TableCell align="center">
-                <Checkbox checked={row.sunday} />
-              </TableCell>
-              <TableCell align="center">
-                <Checkbox checked={row.monday} />
-              </TableCell>
-              <TableCell align="center">
-                <Checkbox checked={row.tuesday} />
-              </TableCell>
-              <TableCell align="center">
-                <Checkbox checked={row.wednesday} />
-              </TableCell>
-              <TableCell align="center">
-                <Checkbox checked={row.thursday} />
-              </TableCell>
-              <TableCell align="center">
-                <Checkbox checked={row.friday} />
-              </TableCell>
-              <TableCell align="center">
-                <Checkbox checked={row.saturday} />
-              </TableCell>
+                {name}
+              </TableCell>{" "}
+              {days.map((day, idx) => (
+                <TableCell align="center" key={"day" + idx}>
+                  <Checkbox
+                    onChange={() => onChange(name, idx)}
+                    checked={day}
+                  />
+                </TableCell>
+              ))}
             </TableRow>
           ))}
         </TableBody>
